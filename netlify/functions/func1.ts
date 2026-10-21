@@ -124,7 +124,8 @@ export default async (req: Request, ctx: Context) => {
   const encoder = new TextEncoder();
   const outBody = new ReadableStream({
     start(controller) {
-      
+      for await (const chunk of stream) {
+      }
     }
   });
 
