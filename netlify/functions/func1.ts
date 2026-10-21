@@ -137,7 +137,9 @@ export default async (req: Request, ctx: Context) => {
   returnHeaders.set('accept-ranges', res.headers['accept-ranges']);
   returnHeaders.set('content-range', res.headers['content-range']);
 
-  return new Response(
+  returnHeaders.set('Access-Control-Allow-Origin', req.headers.get(
+
+  return new Response(outBody, { status: res.status, headers: returnHeaders });
   
 
   
