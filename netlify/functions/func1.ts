@@ -124,8 +124,7 @@ export default async (req: Request, ctx: Context) => {
   const encoder = new TextEncoder();
   const outBody = new ReadableStream({
     start(controller) {
-      res.data.on('data', (newData) => {
-      });
+      
     }
   });
 
