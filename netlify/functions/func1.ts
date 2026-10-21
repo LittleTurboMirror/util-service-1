@@ -120,5 +120,5 @@ export default async (req: Request, ctx: Context) => {
 
 export const config: Config = {
   // method: "GET",
-  path: "api/random/func1",
+  path: "/api/random/func1",
 };
