@@ -123,7 +123,7 @@ export default async (req: Request, ctx: Context) => {
   console.log(res.headers);
   const encoder = new TextEncoder();
   const outBody = new ReadableStream({
-    start(controller) {
+    async start(controller) {
       for await (const chunk of stream) {
         controller.enqueue(encoder.encode(String(chunk)));
       }
