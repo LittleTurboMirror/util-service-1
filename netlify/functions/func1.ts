@@ -44,13 +44,15 @@ export default async (req: Request, ctx: Context) => {
   if (searchParams == undefined) return getDefaultResponse();
 
   if (!searchParams.has("__h1")) return getDefaultResponse(); // __host
-  if (!searchParams.has("__p1")) return getDefaultResponse(); // __port
+  // if (!searchParams.has("__p1")) return getDefaultResponse(); // __port
   if (!searchParams.has("__p2")) return getDefaultResponse(); // __protocol
 
   let chosenURL = new URL(req.url);
   
   chosenURL.host = searchParams.get("__h1");
-  chosenURL.protocol = searchParams.get("__p2");
+  if (searchParams.has("__p1")) {
+    chosenURL.protocol = searchParams.get("__p2");
+  }
   // chosenURL.port = parseInt(offsetStringBackwards(searchParams.get("__p1")));
   chosenURL.port = searchParams.get("__p1");
   chosenURL.searchParams.delete("__h1");
