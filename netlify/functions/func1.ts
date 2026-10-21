@@ -137,7 +137,10 @@ export default async (req: Request, ctx: Context) => {
   returnHeaders.set('accept-ranges', res.headers['accept-ranges']);
   returnHeaders.set('content-range', res.headers['content-range']);
 
-  returnHeaders.set('Access-Control-Allow-Origin', req.headers.get(
+  returnHeaders.set('Access-Control-Allow-Origin', '*');
+  headers.set('Access-Control-Allow-Headers', '*');
+  returnHeaders.set('Access-Control-Allow-Methods': 'GET, OPTIONS, PUT, POST, DELETE, HEAD');
+  returnHeaders.set('Access-Control-Allow-Credentials', 'true');
 
   return new Response(outBody, { status: res.status, headers: returnHeaders });
   
