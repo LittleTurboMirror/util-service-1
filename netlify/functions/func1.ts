@@ -32,7 +32,7 @@ function getDefaultResponse(): Response {
 }
 
 export default async (req: Request, ctx: Context) => {
-
+  console.log("Recieved");
   let url: URL | undefined;
   try {
     url = new URL(req.url);
@@ -47,6 +47,9 @@ export default async (req: Request, ctx: Context) => {
   // if (!searchParams.has("__p1")) return getDefaultResponse(); // __port
   if (!searchParams.has("__p2")) return getDefaultResponse(); // __protocol
 
+  console.log("Created new!");
+  
+  
   let chosenURL = new URL(req.url);
   
   chosenURL.host = searchParams.get("__h1");
@@ -67,6 +70,8 @@ export default async (req: Request, ctx: Context) => {
   }
 
   chosenURL.searchParams.delete("__h2"); // headers
+
+  console.log("Passed all!");
 
   
   
@@ -94,6 +99,8 @@ export default async (req: Request, ctx: Context) => {
       method: req.method,
     });
   } catch (err) {
+    console.log("Fail");
+    console.log({ err });
     return getDefaultResponse();
   }
 
