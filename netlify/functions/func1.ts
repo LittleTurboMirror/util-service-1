@@ -122,8 +122,10 @@ export default async (req: Request, ctx: Context) => {
   console.log("Headers:");
   console.log(res.headers);
   const encoder = new TextEncoder();
-  const body = new ReadableStream({
-  }
+  const outBody = new ReadableStream({
+    start(controller) {
+    }
+  });
 
 
   
