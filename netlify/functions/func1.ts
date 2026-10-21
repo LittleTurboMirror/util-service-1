@@ -121,17 +121,10 @@ export default async (req: Request, ctx: Context) => {
   });*/
   console.log("Headers:");
   console.log(res.headers);
-  let hasSeen1 = false;
-  res.data.on('data', (newData) => {
-    if (hasSeen1 == false) {
-      hasSeen1 = true;
-      console.log("Headers:");
-      console.log(res.headers);
-      //return getDefaultResponse();
-    }
-  });
-  return getDefaultResponse();
-  
+  const encoder = new TextEncoder();
+  const body = new ReadableStream({
+  }
+
 
   
   
