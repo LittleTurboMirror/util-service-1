@@ -86,7 +86,7 @@ export default async (req: Request, ctx: Context) => {
     // res = await axios.get<any>(chosenURL, {
     // res = await axios<any>(chosenURL, {
     res = await axios.request<any>({
-      url: chosenURL,
+      url: chosenURL.href,
       headers: reqHeaders,
       timeout: 60000,
       responseType: "stream",
@@ -101,6 +101,7 @@ export default async (req: Request, ctx: Context) => {
   } catch (err) {
     console.log("Fail");
     console.log({ err });
+    console.log
     return getDefaultResponse();
   }
 
