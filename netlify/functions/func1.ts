@@ -62,6 +62,13 @@ export default async (req: Request, ctx: Context) => {
   chosenURL.searchParams.delete("__p1");
   chosenURL.searchParams.delete("__p2");
 
+  if (chosenURL.searchParams.has("__pn")) { // pathname
+    chosenURL.pathname = chosenURL.searchParams.get("__pn");
+  } else {
+    chosenURL.pathname = "/";
+  }
+  chosenURL.searchParams.delete("__pn");
+
   let reqHeaders = new Headers(JSON.parse(url.searchParams.get("__h2") || "{}"));
   copyHeader('range', reqHeaders, req.headers);
 
