@@ -125,7 +125,9 @@ export default async (req: Request, ctx: Context) => {
   const outBody = new ReadableStream({
     start(controller) {
       for await (const chunk of stream) {
+        controller.enqueue(encoder.encode(String(chunk)));
       }
+      controller.close();
     }
   });
 
