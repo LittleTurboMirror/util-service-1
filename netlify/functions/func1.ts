@@ -101,7 +101,8 @@ export default async (req: Request, ctx: Context) => {
   } catch (err) {
     console.log("Fail");
     console.log({ err });
-    console.log
+    console.log(err.config.url);
+    console.log(err.request.__currentUrl);
     return getDefaultResponse();
   }
 
