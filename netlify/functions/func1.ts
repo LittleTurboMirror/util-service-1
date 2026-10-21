@@ -131,8 +131,14 @@ export default async (req: Request, ctx: Context) => {
     }
   });
 
-  
+  returnHeaders.set('content-length', res.headers['content-length']);
+  returnHeaders.set('content-type', res.headers['content-type']);
+  returnHeaders.set('content-disposition', res.headers['content-disposition']);
+  returnHeaders.set('accept-ranges', res.headers['accept-ranges']);
+  returnHeaders.set('content-range', res.headers['content-range']);
 
+  return new Response(
+  
 
   
   
